@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Moedas</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Conversor de Moedas</h1>
+        <img src="./money.gif" id="money-gif">
+        <input id="valor-real" placeholder="Valor em Reais" type="number">
+        <button onclick="converterDolar()">Dólar</button> 
+        <button onclick="converterEuro()">Euro</button> 
+        <button onclick="converterLibra()">Libra</button>
+    </div>
+
+    <!-- Modal e sobreposição -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal" id="modal">
+        <p id="modal-message"></p>
+        <button onclick="fecharModal()">Fechar</button>
+    </div>
+
+    <script>
+        // Função para abrir o modal com a mensagem
+        function abrirModal(mensagem) {
+            document.getElementById("modal-message").innerText = mensagem;
+            document.getElementById("modal-overlay").style.display = "block";
+            document.getElementById("modal").style.display = "block";
+        }
+
+        // Função para fechar o modal
+        function fecharModal() {
+            document.getElementById("modal-overlay").style.display = "none";
+            document.getElementById("modal").style.display = "none";
+        }
+
+        // Funções de conversão modificadas
+        function converterDolar() {
+            const valorReal = document.getElementById("valor-real").value;
+            const valorDolar = valorReal / 5.42;
+            abrirModal(`O valor em Dólar é ${valorDolar.toFixed(2)} dólares`);
+        }
+
+        function converterEuro() {
+            const valorReal = document.getElementById("valor-real").value;
+            const valorEuro = valorReal / 5.81;
+            abrirModal(`O valor em Euro é ${valorEuro.toFixed(2)} euros`);
+        }
+
+        function converterLibra() {
+            const valorReal = document.getElementById("valor-real").value;
+            const valorLibra = valorReal / 6.88;
+            abrirModal(`O valor em Libras é ${valorLibra.toFixed(2)} libras`);
+        }
+    </script>
+</body>
+</html>
